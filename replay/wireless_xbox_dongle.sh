@@ -17,7 +17,7 @@ else
     sudo apt update
 
     echo "Installing dependencies..."
-    sudo apt install -y dkms curl cabextract linux-headers-$(uname -r)
+    sudo apt install -y dkms curl cabextract
 
     echo "Cloning xone repository..."
     git clone https://github.com/dlundqvist/xone.git ~/xone
