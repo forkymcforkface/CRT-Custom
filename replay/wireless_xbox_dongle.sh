@@ -4,6 +4,7 @@ set -e
 
 ASOUND_FILE="$HOME/.asoundrc"
 XONE_INSTALLED=false
+REPLAY_CFG="/media/sd/config/replay.cfg"
 
 # Check if xone is installed
 if lsmod | grep -q "^xone"; then
@@ -55,6 +56,15 @@ pcm.!default pcm.xbox
 ctl.!default ctl.xbox
 EOL
         echo "Headphone port enabled."
+
+        # Modify /media/sd/config/replay.cfg if it exists
+        if [[ -f "$REPLAY_CFG" ]]; then
+            echo "Updating audio_system_volume in replay.cfg..."
+            sudo sed -i 's/^audio_system_volume = ".*"/audio_system_volume = "1"/' "$REPLAY_CFG"
+            echo "audio_system_volume has been set to 1."
+        else
+            echo "Warning: $REPLAY_CFG not found. Skipping modification."
+        fi
         break
     elif [[ "$choice" == "n" ]]; then
         echo "Disabling Xbox controller headphone port..."
