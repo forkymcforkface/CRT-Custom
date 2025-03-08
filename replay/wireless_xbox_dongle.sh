@@ -76,4 +76,4 @@ EOL
     fi
 done
 
-echo "Done!"
+echo "Reboot ReplayOS for this to work!"
