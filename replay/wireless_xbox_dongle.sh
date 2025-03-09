@@ -2,12 +2,9 @@
 
 set -e
 
-XONE_INSTALLED=false
-
 # Check if xone is installed
 if lsmod | grep -q "^xone"; then
     echo "xone is already installed."
-    XONE_INSTALLED=true
 else
     echo "xone is not installed. Proceeding with installation..."
     
@@ -28,4 +25,4 @@ else
     echo "Installation complete! You can now plug in your Xbox devices."
 fi
 
-echo "Set ReplayOS to USB DAC and reboot for headphones to work"
+echo "Set ReplayOS to USB DAC and reboot for controller aux port to work"
