@@ -2,9 +2,7 @@
 
 set -e
 
-ASOUND_FILE="$HOME/.asoundrc"
 XONE_INSTALLED=false
-REPLAY_CFG="/media/sd/config/replay.cfg"
 
 # Check if xone is installed
 if lsmod | grep -q "^xone"; then
