@@ -12,7 +12,7 @@ else
     sudo apt update
 
     echo "Installing dependencies..."
-    sudo apt install -y dkms curl cabextract
+    sudo apt install -y git dkms curl cabextract
 
     echo "Cloning xone repository..."
     git clone https://github.com/forkymcforkface/xone.git ~/xone
