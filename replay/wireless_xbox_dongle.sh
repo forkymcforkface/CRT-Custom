@@ -20,7 +20,7 @@ else
 
     echo "Installing xone..."
     sudo ./install.sh --release
-    sudo ./xone-get-firmware.sh --skip-disclaimer
+    sudo xone-get-firmware.sh --skip-disclaimer
 
     echo "Installation complete! You can now plug in your Xbox devices."
 fi
