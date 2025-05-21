@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# This utilizes an HDFury3 EDID to enable sound on cheap HDMI to VGA DACS that have a non working AUX port within ReplayOS
+# This utilizes an HDFury3 EDID to enable audio on cheap HDMI to VGA DACS that have a non working AUX port within ReplayOS
 
 # 1. Add EDID firmware to cmdline.txt if not already present
 CMDLINE="/boot/firmware/cmdline.txt"
