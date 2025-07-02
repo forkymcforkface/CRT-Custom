@@ -1,0 +1,34 @@
+PLAYER 1
+| Button | BCM GPIO | Physical Pin |
+| ------ | -------- | ------------ |
+| Home   | GPIO26   | Pin 37       |
+| Up     | GPIO4    | Pin 7        |
+| Down   | GPIO17   | Pin 11       |
+| Left   | GPIO27   | Pin 13       |
+| Right  | GPIO22   | Pin 15       |
+| Start  | GPIO10   | Pin 19       |
+| Select | GPIO9    | Pin 21       |
+| A      | GPIO25   | Pin 22       |
+| B      | GPIO24   | Pin 18       |
+| TR     | GPIO23   | Pin 16       |
+| Y      | GPIO18   | Pin 12       |
+| X      | GPIO15   | Pin 10       |
+| TL     | GPIO14   | Pin 8        |
+
+
+PLAYER 2
+
+| Button | BCM GPIO | Physical Pin |
+| ------ | -------- | ------------ |
+| Up     | GPIO11   | Pin 23       |
+| Down   | GPIO5    | Pin 29       |
+| Left   | GPIO6    | Pin 31       |
+| Right  | GPIO13   | Pin 33       |
+| Start  | GPIO19   | Pin 35       |
+| Select | GPIO26   | Pin 37       |
+| A      | GPIO21   | Pin 40       |
+| B      | GPIO20   | Pin 38       |
+| TR     | GPIO16   | Pin 36       |
+| Y      | GPIO12   | Pin 32       |
+| X      | GPIO7    | Pin 26       |
+| TL     | GPIO8    | Pin 24       |
