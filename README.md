@@ -4,7 +4,7 @@ This is a repo of scripts that I use for the underlying replayOS operating syste
 
 **HDMI Audio script**
 
-For some reason some HDMI dacs with built in aux port doesnt push audio through this port. I found a workaround that uses an EDID from a working DAC. This wont affect anything on the display. Its simple to install via ssh. This currently only applies it to the Primary hdmi port. I have not tried this with cloning the display feature in replayOS. If this does not enable your HDMI Audio, then get a new HDMI DAC that is known to work.
+Some HDMI DACs with built-in AUX ports fail to output audio through the AUX jack. I found a workaround that uses an EDID file from a known working DAC. This does not affect video output and is easy to install via SSH. Currently, it only applies to the primary HDMI port and hasn’t been tested with display cloning in replayOS. If this doesn't resolve your HDMI audio issue, consider switching to a DAC known to work.
 
 - SSH into ReplayOS with root/replayos credentials. How to ssh into ReplayOS is on the replayOS Wiki.
 - [Go here](https://github.com/forkymcforkface/CRT-Custom/blob/main/replay/HDMI/enable_hdmidac_audio.sh)
