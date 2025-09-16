@@ -29,16 +29,11 @@ echo ">> Done. Custom xone driver patched and installed."
 
 echo ">> Installing xpad-noone to allow xone to manage xbox one controllers"
 echo ">> Cloning xpad repo..."
-sudo sed -i '/^\s*blacklist\s\+xpad\s*$/d' /etc/modprobe.d/xone-blacklist.conf
-rm -rf /usr/src/xpad-0.4
-git clone https://github.com/forkymcforkface/xpad-noone.git /usr/src/xpad-0.4
-cd /usr/src/xpad-0.4
 
-echo ">> Uninstalling xpad module..."
-dkms remove -m xpad -v 0.4 --all || true
-
-echo ">> Installing xpad module..."
-dkms install -m xpad -v 0.4 --force
-sudo modprobe xpad
+sudo modprobe -r xpad xpad-noone || true
+sudo git clone https://github.com/forkymcforkface/xpad-noone.git /usr/src/xpad-noone-1.0
+sudo dkms install -m xpad-noone -v 1.0
+echo 'xpad-noone' | sudo tee /etc/modules-load.d/xpad-noone.conf
+sudo modprobe xpad-noone
 
 echo ">> Done. Custom xpad driver patched and installed, please reboot."
