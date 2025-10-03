@@ -1,4 +1,7 @@
-This is a repo of scripts that I use for the underlying replayOS operating system Raspberry Pi OS Bookworm. 
+**This is a repo of scripts that I use for the underlying replayOS operating system Raspberry Pi OS Bookworm.**
+
+
+---------------------------------------------
 
 
 **XBOX Dongle and controller support script**
