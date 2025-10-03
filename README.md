@@ -1,5 +1,16 @@
 This is a repo of scripts that I use for the underlying replayOS operating system Raspberry Pi OS Bookworm. 
 
+
+**XBOX Dongle and controller support script**
+
+xone is needed to use the microsoft wireless dongle, and also has better sleep/wakeup support than xpad.
+
+just run this one liner in replayOS ssh and then you can have a more robust xbox controller support installer.
+
+```
+wget -qO- https://github.com/forkymcforkface/CRT-Custom/archive/refs/heads/main.zip | busybox unzip -qd /opt/xbox-drv - && cp -r /opt/xbox-drv/CRT-Custom-main/replay/controllers/* /opt/xbox-drv/ && rm -rf /opt/xbox-drv/CRT-Custom-main && chmod -R +x /opt/xbox-drv
+```
+
 ---------------------------------------------
 
 **HDMI Audio script**
