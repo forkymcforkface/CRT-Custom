@@ -1,39 +1,45 @@
 #!/bin/bash
 set -e
 
+# --- Helper function to check for internet ---
+check_internet() {
+    ping -q -c 1 -W 1 github.com >/dev/null 2>&1
+}
+
 # --- Install required packages silently ---
 echo ">> Installing required packages..."
 export DEBIAN_FRONTEND=noninteractive
-sudo apt update -qq
-sudo apt install -y -qq git dkms build-essential patch libasound2-dev usbutils
+if check_internet; then
+    sudo apt update -qq || true
+    sudo apt install -y -qq git dkms build-essential patch libasound2-dev usbutils || true
+else
+    echo "No internet detected. Skipping package installation."
+fi
 
 cd /opt/xbox-drv
 
-echo ">> Cloning/updating xone repo..."
-if [ -d xone ]; then
-    cd xone
-    git pull
-else
-    git clone https://github.com/dlundqvist/xone
-    cd xone
+# --- xone ---
+echo ">> Copying firmware..."
+sudo cp -v firmware/* /lib/firmware/ || true
+
+echo ">> Updating xone repo..."
+if check_internet; then
+    git -C xone pull || true
 fi
 
 echo ">> Installing xone module..."
-sudo make install
+sudo make -C xone install || true
 
-echo ">> Done. Custom xone driver patched and installed."
-
-echo ">> Installing xpad-noone to allow xone to manage xbox one controllers"
-echo ">> Cloning/updating xpad repo..."
+# --- xpad-noone ---
+echo ">> Updating xpad-noone repo..."
+if check_internet; then
+    git -C xpad-noone-1.0 pull || true
+fi
 
 sudo modprobe -r xpad xpad-noone || true
-if [ -d /usr/src/xpad-noone-1.0 ]; then
-    sudo git -C /usr/src/xpad-noone-1.0 pull
-else
-    sudo git clone https://github.com/forkymcforkface/xpad-noone.git /usr/src/xpad-noone-1.0
-fi
-sudo dkms install -m xpad-noone -v 1.0
-echo 'xpad-noone' | sudo tee /etc/modules-load.d/xpad-noone.conf
-sudo modprobe xpad-noone
+sudo rsync -a --delete xpad-noone-1.0/ /usr/src/xpad-noone-1.0/ || true
+sudo dkms install -m xpad-noone -v 1.0 --force || true
 
-echo ">> Done. Custom xpad driver patched and installed, please reboot."
+echo ">> Loading xpad-noone module..."
+echo 'xpad-noone' | sudo tee /etc/modules-load.d/xpad-noone.conf >/dev/null
+sudo modprobe xpad-noone || true
